@@ -6,8 +6,6 @@
 package com.ifm.beans;
 
 import com.ifm.dto.UserDTO;
-import com.ifm.entities.User;
-import com.ifm.facades.UserFacade;
 import com.ifm.rest.client.UserRestClient;
 import java.io.Serializable;
 import java.util.List;
@@ -26,8 +24,7 @@ import javax.inject.Named;
 @SessionScoped
 public class UserBean implements Serializable {
 
-    @Inject
-    private UserFacade userFacade;
+   
     
     @Inject
     private UserRestClient userRestClient;
@@ -41,11 +38,7 @@ public class UserBean implements Serializable {
     }
     
     
-    // get information directly from database
-    public List<User>  getUserList(){
-        return userFacade.findAll();
-    }
-    
+   
     // get infromation via REST from remote microservice 
      public List<UserDTO>  getUserRemoteList(){
         return userRestClient.getAllUsers();
