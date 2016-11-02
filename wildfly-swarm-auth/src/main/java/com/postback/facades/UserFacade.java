@@ -1,17 +1,11 @@
 package com.postback.facades;
 
-import com.postback.dto.PostDTO;
 import com.postback.dto.UserDTO;
-import com.postback.entities.Post;
 import com.postback.entities.User;
 import com.postback.utils.HashUtil;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.ejb.LocalBean;
-import javax.ejb.Singleton;
-import javax.ejb.Startup;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

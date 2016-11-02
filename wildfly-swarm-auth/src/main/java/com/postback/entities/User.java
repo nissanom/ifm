@@ -82,9 +82,7 @@ public class User implements Serializable {
     @Column(name = "avatar")
     private String avatar; 
     
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Post> postList;
-    
+   
 
     public User() {
     }
@@ -229,13 +227,7 @@ public class User implements Serializable {
         this.avatar = avatar;
     }
 
-    public List<Post> getPostList() {
-        return postList;
-    }
 
-    public void setPostList(List<Post> postList) {
-        this.postList = postList;
-    }    
     
     
     @Override
@@ -252,10 +244,7 @@ public class User implements Serializable {
             return false;
         }
         User other = (User) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override
