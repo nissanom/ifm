@@ -7,46 +7,29 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf"         
       xmlns:passthrough="http://xmlns.jcp.org/jsf/passthrough"     
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">   
 
-      <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <f:view>
-            <h:form>
-                <h1><h:outputText value="List"/></h1>
-                <p:dataTable value="#{userBean.userRemoteList}" var="item">
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Id"/>
-                        </f:facet>
-                        <h:outputText value="#{item.id}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Firstname"/>
-                        </f:facet>
-                        <h:outputText value="#{item.firstname}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Lastname"/>
-                        </f:facet>
-                        <h:outputText value="#{item.lastname}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Email"/>
-                        </f:facet>
-                        <h:outputText value="#{item.email}"/>
-                    </p:column>
-                 
-                </p:dataTable>
+    <f:view contracts="default" transient="false">        
+        <h:head>
 
-            </h:form>
-        </f:view>
-
-    </h:body>
+        </h:head>
+        <ui:composition template="/template.xhtml">              
+            <ui:define name="content">   
+                <div class="breadcrumbs">
+                    <div class="container">
+                        <ul class="pull-left breadcrumb">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Pages</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--=== Content Part ===-->
+                <div class="container content">
+                    <div class="row">
+                        I am a index
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </f:view>
 </html>
-

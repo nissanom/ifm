@@ -1,28 +1,89 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui"    
-                xmlns:c="http://java.sun.com/jsp/jstl/core"     
-                xmlns:jsf="http://xmlns.jcp.org/jsf"         
-                xmlns:passthrough="http://xmlns.jcp.org/jsf/passthrough"     
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
-                template="/template.xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"    
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"     
+      xmlns:jsf="http://xmlns.jcp.org/jsf"         
+      xmlns:passthrough="http://xmlns.jcp.org/jsf/passthrough"     
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">   
 
-    <ui:define name="top">
-        top
-    </ui:define>
+    <f:view contracts="login" transient="false">        
+        <h:head>
 
-    <ui:define name="left">
-        left
-    </ui:define>
-
-    <ui:define name="right">
-        right
-    </ui:define>
-
-    <ui:define name="content">
-        Test template
-    </ui:define>
-
-</ui:composition>
+        </h:head>
+        <ui:composition template="/template.xhtml">              
+            <ui:define name="content">   
+                <!--=== Content Part ===-->
+                <div class="container-fluid">
+                    <div class="row equal-height-columns">
+                        <div class="col-md-6 col-sm-6 hidden-xs image-block equal-height-column"></div>
+                        <div class="col-md-6 col-sm-6 form-block equal-height-column">
+                            <a href="#">
+                                <img src="#{request.contextPath}/resources/assets/img/themes/ifm_logo.png" alt="" style="margin-bottom: 50px !important"/>
+                            </a>
+                            <h2 class="margin-bottom-30">Login To Your Account</h2>
+                            <h:form prependId="false">
+                                
+                                <p:growl/>
+                                <div class="login-block">
+                                    <div class="input-group margin-bottom-20">
+                                        <span class="input-group-addon rounded-left"><i class="icon-user color-blue"></i></span>                                      
+                                        <h:inputText id="email" value="#{loginBean.email}" requiredMessage="Please fill" passthrough:placeholder="Username" required="true" styleClass="form-control rounded-right"/>
+                                    </div>
+                                    <div class="input-group margin-bottom-20">
+                                        <span class="input-group-addon rounded-left"><i class="icon-lock color-blue"></i></span>                                        
+                                        <h:inputSecret id="password" value="#{loginBean.password}" passthrough:placeholder="Password" required="true" styleClass="form-control rounded-right"/>
+                                    </div>
+                                    <div class="checkbox">
+                                        <ul class="list-inline">
+                                            <li>
+                                                <label>
+                                                    <input type="checkbox"/> Remember me
+                                                </label>
+                                            </li>
+                                            <li class="pull-right">
+                                                <a href="#">Forgot password?</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="row margin-bottom-70">
+                                        <div class="col-md-12">
+                                            <h:commandButton action="#{loginBean.doLogin()}" value="Sign in" styleClass="btn-u btn-u-blue btn-block rounded"/>
+                                        </div>
+                                    </div>
+                                    <div class="social-login text-center">
+                                        <div class="or rounded-x">Or</div>
+                                        <ul class="list-inline margin-bottom-20">
+                                            <li>
+                                                <button class="btn rounded btn-lg btn-facebook">
+                                                    <i class="fa fa-facebook"></i> Facebook Sign in
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button class="btn rounded btn-lg btn-twitter">
+                                                    <i class="fa fa-twitter"></i> Twitter Sign in
+                                                </button>
+                                            </li>
+                                        </ul>
+                                        <p>Don't have an account? <a href="page_registration2.html">Create New</a></p>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div><!--/container-->
+                <!--=== End Content Part ===-->
+                <!--=== Sticky Footer ===-->
+                <div class="container sticky-footer">
+                    <ul class="list-unstyled list-inline social-links margin-bottom-20">
+                        <li><a href="#"><i class="icon-custom icon rounded-x icon-bg-blue fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="icon-custom icon rounded-x icon-bg-blue fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="icon-custom icon rounded-x icon-bg-blue fa fa-google-plus"></i></a></li>
+                    </ul>                 
+                </div>
+            </ui:define>
+        </ui:composition>
+    </f:view>
+</html>

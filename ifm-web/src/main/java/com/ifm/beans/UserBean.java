@@ -11,7 +11,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 
-
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -22,26 +21,23 @@ import javax.inject.Named;
 //@ManagedBean(name="userBean")
 @Named
 @SessionScoped
-public class UserBean implements Serializable {
+public class UserBean implements Serializable
+{
 
-   
-    
     @Inject
     private UserRestClient userRestClient;
-    
-    
 
     /**
      * Creates a new instance of UserBean
      */
-    public UserBean() {
+    public UserBean()
+    {
     }
-    
-    
-   
+
     // get infromation via REST from remote microservice 
-     public List<UserDTO>  getUserRemoteList(){
+    public List<UserDTO> getUserRemoteList()
+    {
         return userRestClient.getAllUsers();
     }
-    
+
 }

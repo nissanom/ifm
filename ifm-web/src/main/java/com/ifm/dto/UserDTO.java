@@ -8,215 +8,257 @@ package com.ifm.dto;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  *
  * @author Omer
  */
-
-public class UserDTO implements Serializable {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class UserDTO implements Serializable
+{
 
     private static final long serialVersionUID = 1L;
-    
+
     private Long id;
-  
+
     private String firstname;
-   
+
     private String lastname;
-    
+
     private String email;
-    
-    private String passwd;
-   
+
     private Integer status;
-    
+
     private Date registerDate;
-    
+
     private Date lastLoginDate;
-   
+
     private BigInteger profileImageId;
-  
+
     private String location;
-    
+
     private Integer followersCount;
-    
+
     private Integer friendCount;
-    
+
     private Integer statusesCount;
-    
+
     private String profileUrl;
-    
+    private String password;
+
     private String timeZone;
     private String description;
 
     private String avatar;
 
-    public UserDTO() {
+    public UserDTO()
+    {
     }
 
-    public UserDTO(Long id) {
+    public UserDTO( Long id )
+    {
         this.id = id;
     }
 
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId( Long id )
+    {
         this.id = id;
     }
 
-    public String getFirstname() {
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public String getFirstname()
+    {
         return firstname;
     }
 
-    public void setFirstname(String firstname) {
+    public void setPassword( String password )
+    {
+        this.password = password;
+    }
+
+    public void setFirstname( String firstname )
+    {
         this.firstname = firstname;
     }
 
-    public String getLastname() {
+    public String getLastname()
+    {
         return lastname;
     }
 
-    public void setLastname(String lastname) {
+    public void setLastname( String lastname )
+    {
         this.lastname = lastname;
     }
 
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail( String email )
+    {
         this.email = email;
     }
 
-    public String getPasswd() {
-        return passwd;
-    }
-
-    public void setPasswd(String passwd) {
-        this.passwd = passwd;
-    }
-
-    public Integer getStatus() {
+    public Integer getStatus()
+    {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus( Integer status )
+    {
         this.status = status;
     }
 
-    public Date getRegisterDate() {
+    public Date getRegisterDate()
+    {
         return registerDate;
     }
 
-    public void setRegisterDate(Date registerDate) {
+    public void setRegisterDate( Date registerDate )
+    {
         this.registerDate = registerDate;
     }
 
-    public Date getLastLoginDate() {
+    public Date getLastLoginDate()
+    {
         return lastLoginDate;
     }
 
-    public void setLastLoginDate(Date lastLoginDate) {
+    public void setLastLoginDate( Date lastLoginDate )
+    {
         this.lastLoginDate = lastLoginDate;
     }
 
-    public BigInteger getProfileImageId() {
+    public BigInteger getProfileImageId()
+    {
         return profileImageId;
     }
 
-    public void setProfileImageId(BigInteger profileImageId) {
+    public void setProfileImageId( BigInteger profileImageId )
+    {
         this.profileImageId = profileImageId;
     }
 
-    public String getLocation() {
+    public String getLocation()
+    {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation( String location )
+    {
         this.location = location;
     }
 
-    public Integer getFollowersCount() {
+    public Integer getFollowersCount()
+    {
         return followersCount;
     }
 
-    public void setFollowersCount(Integer followersCount) {
+    public void setFollowersCount( Integer followersCount )
+    {
         this.followersCount = followersCount;
     }
 
-    public Integer getFriendCount() {
+    public Integer getFriendCount()
+    {
         return friendCount;
     }
 
-    public void setFriendCount(Integer friendCount) {
+    public void setFriendCount( Integer friendCount )
+    {
         this.friendCount = friendCount;
     }
 
-    public Integer getStatusesCount() {
+    public Integer getStatusesCount()
+    {
         return statusesCount;
     }
 
-    public void setStatusesCount(Integer statusesCount) {
+    public void setStatusesCount( Integer statusesCount )
+    {
         this.statusesCount = statusesCount;
     }
 
-    public String getProfileUrl() {
+    public String getProfileUrl()
+    {
         return profileUrl;
     }
 
-    public void setProfileUrl(String profileUrl) {
+    public void setProfileUrl( String profileUrl )
+    {
         this.profileUrl = profileUrl;
     }
 
-    public String getTimeZone() {
+    public String getTimeZone()
+    {
         return timeZone;
     }
 
-    public void setTimeZone(String timeZone) {
+    public void setTimeZone( String timeZone )
+    {
         this.timeZone = timeZone;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription( String description )
+    {
         this.description = description;
     }
 
-    public String getAvatar() {
+    public String getAvatar()
+    {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar( String avatar )
+    {
         this.avatar = avatar;
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals( Object object )
+    {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof UserDTO)) {
+        if ( !(object instanceof UserDTO) )
+        {
             return false;
         }
         UserDTO other = (UserDTO) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ( (this.id == null && other.id != null) || (this.id != null && !this.id.equals( other.id )) )
+        {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString() {
-        return "com.ifm.entities.User[ id=" + id + " ]";
+    public String toString()
+    {
+        return "com.ifm.dto.UserDTO[ id=" + id + " ]";
     }
-    
+
 }
