@@ -3,7 +3,6 @@ package com.postback.resources;
 import com.postback.dto.UserDTO;
 import com.postback.entities.User;
 import com.postback.facades.UserFacade;
-import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -19,46 +18,76 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/auth")
 @Stateless
-public class UserResource {
+public class UserResource
+{
 
     @Inject
     private UserFacade userFacade;
 
+    @POST
+    @Path("/user/login")
+    @Consumes(
+            {
+                MediaType.APPLICATION_JSON
+            })
+    @Produces(
+            {
+                MediaType.APPLICATION_JSON
+            })
+    public UserDTO login( UserDTO dto )
+    {
+        System.out.println( "DO LOGGIN CALLED!!!!!" );
+        return userFacade.doLogin( dto.getEmail(), dto.getPassword() );
+    }
+
     @GET
     @Path("/user/all")
     @Produces("application/json")
-    public List<UserDTO> getAllUsers() {
+    public List<UserDTO> getAllUsers()
+    {
         return userFacade.getUsers();
     }
 
     @POST
     @Path("/user/register")
-    @Consumes({MediaType.APPLICATION_JSON})
-    public Long create(User entity) {
-        Long id = userFacade.registerNewUser(entity);
+    @Consumes(
+            {
+                MediaType.APPLICATION_JSON
+            })
+    public Long create( User entity )
+    {
+        Long id = userFacade.registerNewUser( entity );
         return id;
     }
 
     @DELETE
     @Path("/user/delete/{id}")
-    public void remove(@PathParam("id") Long id) {        
-        userFacade.remove(userFacade.find(id));
+    public void remove( @PathParam("id") Long id )
+    {
+        userFacade.remove( userFacade.find( id ) );
     }
 
     @GET
     @Path("/user/find/{id}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public User find(@PathParam("id") Long id) {
-        return userFacade.find(id);
+    @Produces(
+            {
+                MediaType.APPLICATION_JSON
+            })
+    public User find( @PathParam("id") Long id )
+    {
+        return userFacade.find( id );
     }
-    
+
     @PUT
     @Path("/user/{id}")
-    @Consumes({MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Long id, User entity) {
-        entity.setId(id);
-        userFacade.edit(entity);
+    @Consumes(
+            {
+                MediaType.APPLICATION_JSON
+            })
+    public void edit( @PathParam("id") Long id, User entity )
+    {
+        entity.setId( id );
+        userFacade.edit( entity );
     }
-   
 
 }

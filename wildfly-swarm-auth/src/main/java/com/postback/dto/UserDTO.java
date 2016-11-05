@@ -18,6 +18,7 @@ public class UserDTO implements Serializable {
     private String lastname;
     
     private String email;  
+    private String password;
   
     private Integer status;
    
@@ -54,6 +55,18 @@ public class UserDTO implements Serializable {
     public Long getId() {
         return id;
     }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword( String password )
+    {
+        this.password = password;
+    }
+    
+    
 
     public void setId(Long id) {
         this.id = id;
