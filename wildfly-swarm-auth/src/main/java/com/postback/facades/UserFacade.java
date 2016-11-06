@@ -4,6 +4,7 @@ import com.postback.dto.UserDTO;
 
 import com.postback.entities.User;
 import com.postback.utils.HashUtil;
+import com.postback.utils.UserStatuses;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -90,14 +91,33 @@ public class UserFacade extends AbstractFacade<User>
         return finalList;
     }
 
-    public Long registerNewUser( User user )
+    public UserDTO doRegister( UserDTO userDTO ) // Is this method get User ?????????????????????
     {
-        user.setPasswd( HashUtil.hashPassword( user.getPasswd() ) );
-        user.setRegisterDate( new Date( System.currentTimeMillis() ) );
+        User user = new User();
+        //ModelMapper modelMapper = new ModelMapper();
+        //User user = modelMapper.map( userDTO, User.class );
+        user.setFirstName( userDTO.getFirstName() );
+        user.setLastName( userDTO.getLastName() );
+        user.setEmail( userDTO.getEmail() );
+        user.setPasswd( userDTO.getPassword() );//hash passhword
+        // boolean check = this.checkEmail( user.getEmail() );
+        Long userId = 0L;
+        //if ( !check )
+        //{
+        user.setStatus( UserStatuses.DISABLED_USER );
         em.persist( user );
+        //em.merge( user ); for doE
         em.flush();
-        Long userId = user.getId();
-        return userId;
+        userId = user.getId();
+        //  }
+        userDTO.setId( userId );
+        return userDTO;
+    }
+
+    public boolean checkEmail( String email )
+    {
+
+        return false;
     }
 
     public User findById( Long id )

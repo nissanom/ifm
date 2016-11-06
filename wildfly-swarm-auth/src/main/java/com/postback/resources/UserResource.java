@@ -15,6 +15,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("/auth")
 @Stateless
@@ -26,14 +27,8 @@ public class UserResource
 
     @POST
     @Path("/user/login")
-    @Consumes(
-            {
-                MediaType.APPLICATION_JSON
-            })
-    @Produces(
-            {
-                MediaType.APPLICATION_JSON
-            })
+    @Consumes( { MediaType.APPLICATION_JSON } )
+    @Produces( { MediaType.APPLICATION_JSON } )
     public UserDTO login( UserDTO dto )
     {
         System.out.println( "DO LOGGIN CALLED!!!!!" );
@@ -42,7 +37,7 @@ public class UserResource
 
     @GET
     @Path("/user/all")
-    @Produces("application/json")
+    @Produces( MediaType.APPLICATION_JSON )
     public List<UserDTO> getAllUsers()
     {
         return userFacade.getUsers();
@@ -50,14 +45,18 @@ public class UserResource
 
     @POST
     @Path("/user/register")
-    @Consumes(
-            {
-                MediaType.APPLICATION_JSON
-            })
-    public Long create( User entity )
-    {
-        Long id = userFacade.registerNewUser( entity );
-        return id;
+    @Consumes( { MediaType.APPLICATION_JSON } )
+    public Response create( UserDTO userDTO )    {
+        userDTO = userFacade.doRegister( userDTO );
+        return Response.ok().entity(userDTO).type(MediaType.APPLICATION_JSON).build();
+    }
+    
+    @PUT
+    @Path("/user/update")
+    @Consumes( { MediaType.APPLICATION_JSON } )
+    public Long update( UserDTO userDTO )    {
+//        Long id = userFacade.doRegister(userDTO);doEdit()
+        return 0L;
     }
 
     @DELETE
@@ -69,10 +68,7 @@ public class UserResource
 
     @GET
     @Path("/user/find/{id}")
-    @Produces(
-            {
-                MediaType.APPLICATION_JSON
-            })
+    @Produces( { MediaType.APPLICATION_JSON } )
     public User find( @PathParam("id") Long id )
     {
         return userFacade.find( id );
@@ -80,10 +76,7 @@ public class UserResource
 
     @PUT
     @Path("/user/{id}")
-    @Consumes(
-            {
-                MediaType.APPLICATION_JSON
-            })
+    @Consumes( { MediaType.APPLICATION_JSON } )
     public void edit( @PathParam("id") Long id, User entity )
     {
         entity.setId( id );
