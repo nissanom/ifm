@@ -33,6 +33,11 @@
             <from-outcome>unsuccess</from-outcome>
             <to-view-id>/error/error.xhtml</to-view-id>
             <redirect/>
+        </navigation-case>    
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/success.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>                       
     </navigation-rule>   
 </faces-config>

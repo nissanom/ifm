@@ -34,17 +34,17 @@ public class UserRestClient
     {
     }
 
-    public UserDTO saveUser( UserDTO model )
+    	public UserDTO doRegister( String firstName, String lastName, String email, String password )
     {
-
+		UserDTO userDTO = null;
         try
         {
             HttpPost request = new HttpPost( REST_PATH + "auth/user/register" );
             JSONObject json = new JSONObject();
-            json.put( "firstname", model.getFirstname() );
-            json.put( "lastname", model.getLastname() );
-            json.put( "email", model.getEmail() );
-            //   json.put( "password", model.getPassword() );
+            json.put( "firstName", firstName );
+            json.put( "lastName", lastName );
+            json.put( "email", email );
+            json.put( "password", password );
 
             StringEntity params = new StringEntity( json.toString(), "UTF-8" );
             request.addHeader( "content-type", "application/json;charset=UTF-8" );
@@ -55,16 +55,13 @@ public class UserRestClient
             // userId = (EntityUtils.toString(entity));
 
             ObjectMapper mapper = new ObjectMapper();
-            model = mapper.readValue( (EntityUtils.toString( entity )), UserDTO.class );
-        } catch ( IOException | ParseException ex )
+            userDTO  = mapper.readValue( (EntityUtils.toString( entity )), UserDTO.class );
+        } catch ( IOException | ParseException e )
         {
-
-        } finally
-        {
-            HTTP_CLIENT.getConnectionManager().shutdown();
+			e.printStackTrace();
         }
 
-        return model;
+        return userDTO;
     }
 
     public UserDTO doLogin( String email, String password )
@@ -74,7 +71,6 @@ public class UserRestClient
         try
         {
             HttpPost request = new HttpPost( REST_PATH + "auth/user/login" );
-            request.addHeader( "charset", "UTF-8" );
             JSONObject json = new JSONObject();
             json.put( "email", email );
             json.put( "password", password );

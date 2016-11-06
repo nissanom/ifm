@@ -32,7 +32,7 @@ public class AuthenticationPhaseListener implements PhaseListener
     @Inject
     private SessionContext sessionContext;
 
-    private void pagePermissionMapping()
+    private void initPagePermissionMapping()
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         if ( pagePermissionMapping == null )
@@ -69,7 +69,7 @@ public class AuthenticationPhaseListener implements PhaseListener
         ExternalContext ex = context.getExternalContext();
         try
         {
-            pagePermissionMapping();
+            initPagePermissionMapping();
 
             String viewId = "/index.xhtml";
 
@@ -83,7 +83,7 @@ public class AuthenticationPhaseListener implements PhaseListener
 
             if ( sessionContext.getUser().getId() != null )
             {
-
+                // for user manipulate
             }
 
 //            if (sessionContext == null && !viewId.contains("index.xhtml")) 

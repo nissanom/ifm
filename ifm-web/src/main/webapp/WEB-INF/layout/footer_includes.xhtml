@@ -11,7 +11,7 @@
     </h:outputScript>
 
     <!-- JS Global Compulsory -->
-<!--    <script src="#{request.contextPath}/resources/assets/plugins/jquery/jquery.min.js"></script>-->
+    <script src="#{request.contextPath}/resources/assets/plugins/jquery/jquery.min.js"></script>
     <script src="#{request.contextPath}/resources/assets/plugins/jquery/jquery-migrate.min.js"></script>
     <script src="#{request.contextPath}/resources/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
@@ -24,20 +24,21 @@
 
     <!-- JS Page Level -->
     <script src="#{request.contextPath}/resources/assets/js/app.js"></script>
-    <script>
-        jQuery(document).ready(function () {
-            App.init();
-        });
-    </script>
-    <script>
-        $(".image-block").backstretch([
-            "#{request.contextPath}/resources/assets/img/bg/img_ball1.jpg",
-            "#{request.contextPath}/resources/assets/img/bg/img_ball10.jpg"
-        ], {
-            fade: 1000,
-            duration: 7000
-        });
-    </script>
+     <script>
+                    jQuery(document).ready(function () {
+                        App.init();
+                    });
+                </script>
+                <script>
+                    $(".image-block").backstretch([
+                        "#{request.contextPath}/resources/assets/img/bg/img_ball1.jpg",
+                        "#{request.contextPath}/resources/assets/img/bg/img_ball10.jpg"
+                    ], {
+                        fade: 1000,
+                        duration: 7000
+                    });
+                </script>
+  
     <!--[if lt IE 9]>
     <script src="#{request.contextPath}/resources/assets/plugins/respond.js"></script>
     <script src="#{request.contextPath}/resources/assets/plugins/html5shiv.js"></script>

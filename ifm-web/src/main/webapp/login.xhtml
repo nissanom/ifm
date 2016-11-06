@@ -11,7 +11,8 @@
 
     <f:view contracts="login" transient="false">        
         <h:head>
-
+            <!-- CSS Theme -->
+            <link rel="stylesheet" href="#{request.contextPath}/resources/assets/css/theme-colors/blue.css"/>
         </h:head>
         <ui:composition template="/template.xhtml">              
             <ui:define name="content">   
@@ -25,7 +26,7 @@
                             </a>
                             <h2 class="margin-bottom-30">Login To Your Account</h2>
                             <h:form prependId="false">
-                                
+
                                 <p:growl/>
                                 <div class="login-block">
                                     <div class="input-group margin-bottom-20">
@@ -67,7 +68,7 @@
                                                 </button>
                                             </li>
                                         </ul>
-                                        <p>Don't have an account? <a href="page_registration2.html">Create New</a></p>
+                                        <p>Don't have an account? <a href="register.jsf">Create New</a></p>
                                     </div>
                                 </div>
                             </h:form>
@@ -83,6 +84,11 @@
                         <li><a href="#"><i class="icon-custom icon rounded-x icon-bg-blue fa fa-google-plus"></i></a></li>
                     </ul>                 
                 </div>
+
+
+            </ui:define>
+            <ui:define name="footer">
+               
             </ui:define>
         </ui:composition>
     </f:view>

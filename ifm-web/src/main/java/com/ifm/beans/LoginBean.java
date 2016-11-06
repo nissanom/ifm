@@ -26,6 +26,7 @@ public class LoginBean implements Serializable
     private String password;
     private String email;
 
+    
     /**
      * Creates a new instance of LoginBean
      */
