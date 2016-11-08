@@ -1,6 +1,6 @@
 package com.ifm.beans;
 
-import com.ifm.beans.handlers.SessionContext;
+import com.ifm.handlers.SessionContext;
 import com.ifm.dto.UserDTO;
 import com.ifm.rest.client.UserRestClient;
 import java.io.Serializable;

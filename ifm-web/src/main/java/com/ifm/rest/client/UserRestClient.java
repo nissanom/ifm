@@ -34,9 +34,9 @@ public class UserRestClient
     {
     }
 
-    	public UserDTO doRegister( String firstName, String lastName, String email, String password )
+    public UserDTO doRegister( String firstName, String lastName, String email, String password )
     {
-		UserDTO userDTO = null;
+        UserDTO userDTO = null;
         try
         {
             HttpPost request = new HttpPost( REST_PATH + "auth/user/register" );
@@ -55,10 +55,10 @@ public class UserRestClient
             // userId = (EntityUtils.toString(entity));
 
             ObjectMapper mapper = new ObjectMapper();
-            userDTO  = mapper.readValue( (EntityUtils.toString( entity )), UserDTO.class );
+            userDTO = mapper.readValue( (EntityUtils.toString( entity )), UserDTO.class );
         } catch ( IOException | ParseException e )
         {
-			e.printStackTrace();
+            e.printStackTrace();
         }
 
         return userDTO;
@@ -80,8 +80,11 @@ public class UserRestClient
             request.setEntity( params );
             HttpResponse response = (HttpResponse) HTTP_CLIENT.execute( request );
             HttpEntity entity = response.getEntity();
-            ObjectMapper mapper = new ObjectMapper();
-            userModel = mapper.readValue( (EntityUtils.toString( entity )), UserDTO.class );
+            if( entity != null )
+            {
+                ObjectMapper mapper = new ObjectMapper();
+                userModel = mapper.readValue( (EntityUtils.toString( entity )), UserDTO.class );
+            }
 
         } catch ( IOException | ParseException e )
         {

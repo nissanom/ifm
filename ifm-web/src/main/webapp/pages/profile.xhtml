@@ -32,7 +32,7 @@
                 <h1><h:outputText value="User profile"/></h1>     
                 <br/>
                 
-                #{sessionContext.user.email}
+             
               
                 <h:commandLink rendered="#{sessionContext.user.id != null}" action="#{logoutBean.doLogout()}" value="Log out" immediate="true"/>
             </h:form>

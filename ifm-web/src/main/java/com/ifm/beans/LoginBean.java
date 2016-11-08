@@ -1,6 +1,7 @@
 package com.ifm.beans;
 
-import com.ifm.beans.handlers.SessionContext;
+//import org.apache.log4j.Logger;
+import com.ifm.handlers.SessionContext;
 import com.ifm.dto.UserDTO;
 import com.ifm.rest.client.UserRestClient;
 import java.io.Serializable;
@@ -22,6 +23,9 @@ public class LoginBean implements Serializable
 
     @Inject
     private SessionContext sessionContext;
+    
+//    @Inject
+//    private transient Logger logger;
 
     private String password;
     private String email;
@@ -38,16 +42,17 @@ public class LoginBean implements Serializable
     public String doLogin()
     {
         UserDTO user = userRestClient.doLogin( email, password );
-        if ( user != null )
+        
+        if ( user != null && user.getId() != null )
         {
+//            logger.info("User: " + user.getFirstName() + user.getLastName() + "has login!");
             sessionContext.setUser( user );
-        } else
-        {
-//            LOGGER!!!! - How to it right????????
-            return null;
-        }
+            return "profile";
+        } 
+        
+        
 
-        return "profile";
+        return "index";
     }
 
     public String doTransferMyMoney()

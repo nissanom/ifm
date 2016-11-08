@@ -1,4 +1,4 @@
-package com.ifm.beans.handlers;
+package com.ifm.handlers;
 
 import com.ifm.dto.UserDTO;
 import javax.inject.Named;
