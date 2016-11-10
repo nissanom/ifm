@@ -27,7 +27,6 @@ public class UserDTO implements Serializable
 //    private BigInteger profileImageId;
 //    private String profileUrl;
 //    private String avatar;
-
     public UserDTO()
     {
     }
@@ -46,8 +45,8 @@ public class UserDTO implements Serializable
     {
         this.id = id;
     }
-	
-	public String getFirstName()
+
+    public String getFirstName()
     {
         return firstName;
     }
@@ -56,8 +55,8 @@ public class UserDTO implements Serializable
     {
         this.firstName = firstName;
     }
-	
-	public String getLastName()
+
+    public String getLastName()
     {
         return lastName;
     }
@@ -66,13 +65,13 @@ public class UserDTO implements Serializable
     {
         this.lastName = lastName;
     }
-	
-	public String getPassword()
+
+    public String getPassword()
     {
         return password;
     }
-	
-	public void setPassword( String password )
+
+    public void setPassword( String password )
     {
         this.password = password;
     }

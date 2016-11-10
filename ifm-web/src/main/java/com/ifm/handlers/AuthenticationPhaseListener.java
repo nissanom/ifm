@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ifm.handlers;
 
 /**
@@ -17,19 +12,21 @@ import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
 import javax.inject.Inject;
-///import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 public class AuthenticationPhaseListener implements PhaseListener
 {
 
     private static final long serialVersionUID = 1L;
-    ///  Logger log = Logger.getLogger(AuthenticationPhaseListener.class);
 
     @Inject
     private SessionContext sessionContext;
 
     @Inject
     private ApplicationManager applicationManager;
+
+    @Inject
+    private transient Logger logger;
 
     @Override
     public void afterPhase( PhaseEvent event )
@@ -52,14 +49,13 @@ public class AuthenticationPhaseListener implements PhaseListener
 
             }
             String permissions = applicationManager.getPagePermissionMapping().get( viewId );
-           //SessionContext sessionContext = (SessionContext) ex.getSessionMap().get("sessionContext");
-            System.out.println("perm " +permissions);
+            //SessionContext sessionContext = (SessionContext) ex.getSessionMap().get("sessionContext");
+            logger.info( viewId + " - permission " + permissions );
 
 //            if ( sessionContext.getUser().getId() != null )
 //            {
 //                // for user manipulate
 //            }
-
 //            if (sessionContext == null && !viewId.contains("index.xhtml") 
 //                    && !viewId.contains("register.xhtml") && !viewId.contains("login.xhtml")) {
 //              
@@ -68,17 +64,17 @@ public class AuthenticationPhaseListener implements PhaseListener
             {
                 return;
             }
-           
+
             if ( permissions != null && sessionContext.getUser().getId() == null && permissions.contains( "LOGGED" ) && !viewId.contains( "index.xhtml" ) )
             {
-                redirect( context,"../index.jsf?wrongAccess" );
+                logger.info( "wrongAccess! redirect to index page" );
+                redirect( context, "../index.jsf?wrongAccess" );
             }
-           
 
         } catch ( Exception ex1 )
         {
             redirect( context, "../index.jsf?illegalAccess" );
-            ex1.printStackTrace();
+            logger.error( ex1 );
         }
     }
 

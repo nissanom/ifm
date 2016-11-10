@@ -39,7 +39,7 @@ public class RegisterBean implements Serializable
     public String doRegister()
     {
         UserDTO userDTO = userRestClient.doRegister( firstName, lastName, email, password );
-        if ( userDTO != null)
+        if ( userDTO != null )
         {
             return "success";
         }

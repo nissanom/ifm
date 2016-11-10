@@ -28,12 +28,13 @@ public class ApplicationManager implements Serializable // Is it need to impleme
      */
     public ApplicationManager() // Should I use @PostConstruct??
     {
-      
+
     }
-    
+
     @PostConstruct
-    public void init(){
-          initPagePermissionMapping(); // Where I need to call initPagePermissionMapping()??
+    public void init()
+    {
+        initPagePermissionMapping(); // Where I need to call initPagePermissionMapping()??
     }
 
     private void initPagePermissionMapping()
@@ -67,6 +68,4 @@ public class ApplicationManager implements Serializable // Is it need to impleme
         return pagePermissionMapping;
     }
 
-    
-    
 }

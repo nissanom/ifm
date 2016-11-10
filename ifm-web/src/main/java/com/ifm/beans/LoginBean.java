@@ -1,13 +1,14 @@
 package com.ifm.beans;
 
-//import org.apache.log4j.Logger;
 import com.ifm.handlers.SessionContext;
 import com.ifm.dto.UserDTO;
 import com.ifm.rest.client.UserRestClient;
+import com.ifm.utils.Constants;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -23,14 +24,13 @@ public class LoginBean implements Serializable
 
     @Inject
     private SessionContext sessionContext;
-    
-//    @Inject
-//    private transient Logger logger;
+
+    @Inject
+    private transient Logger logger;
 
     private String password;
     private String email;
 
-    
     /**
      * Creates a new instance of LoginBean
      */
@@ -41,25 +41,17 @@ public class LoginBean implements Serializable
 
     public String doLogin()
     {
+        logger.debug( "doLogin()" );
         UserDTO user = userRestClient.doLogin( email, password );
-        
+
         if ( user != null && user.getId() != null )
         {
-//            logger.info("User: " + user.getFirstName() + user.getLastName() + "has login!");
+            logger.info( "User: " + user.getFirstName() + user.getLastName() + " has logged!" );
             sessionContext.setUser( user );
-            return "profile";
-        } 
-        
-        
+            return Constants.TEAMS_PAGE;
+        }
 
-        return "index";
-    }
-
-    public String doTransferMyMoney()
-    {
-        // UserDTO user  =  userRestClient.doTransferMyMoney(sessionContext.getUser().getId(), moneyCouunt);
-
-        return "profile";
+        return Constants.INDEX_PAGE;
     }
 
     public void setPassword( String password )
