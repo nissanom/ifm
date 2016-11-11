@@ -5,7 +5,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">    
     <h:head>
-        <ui:include src="/WEB-INF/layout/teams/header_teams.xhtml"/>     
+        <ui:include src="/WEB-INF/layout/teams/header_teams.xhtml"/>   
+          
     </h:head>
     <h:body class="header-fixed promo-padding-top sliding-panel-ini sliding-panel-flag-right">
         <div class="wrapper">
@@ -20,39 +21,12 @@
             </div>
 
             <div class="content-md"> 
-<!--                <ui:insert name="container"/>
-                <div class="container">
-                    <ui:include src="/WEB-INF/layout/teams/service_box.xhtml"/>
-                </div>-->
-
-<!--                <ui:insert name="content_sm"/>
-                <div class="bg-color-light">
-                    <ui:include src="/WEB-INF/layout/teams/content_sm.xhtml"/>
-                </div>-->
-
-<!--                <ui:insert name="portfolio-box"/>
-                <div class="container content-sm">
-                    <ui:include src="/WEB-INF/layout/teams/portfolio-box.xhtml"/>
-                </div>-->
-
-<!--                <ui:insert name="flat-bg-block"/>
-                <div class="flat-bg-block-v1 parallaxBg margin-bottom-60">
-                    <ui:include src="/WEB-INF/layout/teams/flat-bg-block.xhtml"/>
-                </div>-->
-
-<!--                <ui:insert name="headline-left"/>
-                <div class="container">
-                    <ui:include src="/WEB-INF/layout/teams/headline-left.xhtml"/>
-                </div>-->
-
-<!--                <ui:insert name="flat-testimonials"/>
-                <div class="flat-testimonials bg-image-v1 parallaxBg1 margin-bottom-60" style="background-position: 50% 241px;">
-                    <ui:include src="/WEB-INF/layout/teams/flat-testimonials.xhtml"/>
-                </div>-->
-
                 <ui:insert name="headline-center"/>
                 <div class="container">
                     <ui:include src="/WEB-INF/layout/teams/headline-center.xhtml"/>
+                    <div class="container content-sm portfolio-4-columns">
+                        <ui:include src="/WEB-INF/layout/content-sm.xhtml"/> 
+                    </div>    
                 </div>             
             </div>
 
@@ -67,11 +41,11 @@
             <ui:include src="/WEB-INF/layout/teams/sliding-panel.xhtml"/>
         </div>
 
-<!--        <i class="style-switcher-btn fa fa-cogs hidden-xs"></i>
-        <ui:insert name="style-switcher"/>
-        <div class="style-switcher animated fadeInRight">
-            <ui:include src="/WEB-INF/layout/teams/style-switcher.xhtml"/>
-        </div>-->
+        <!--        <i class="style-switcher-btn fa fa-cogs hidden-xs"></i>
+                <ui:insert name="style-switcher"/>
+                <div class="style-switcher animated fadeInRight">
+                    <ui:include src="/WEB-INF/layout/teams/style-switcher.xhtml"/>
+                </div>-->
 
         <ui:insert name="footer"></ui:insert>            
         <!--            <ui:include src="/WEB-INF/layout/footer.xhtml"/>-->

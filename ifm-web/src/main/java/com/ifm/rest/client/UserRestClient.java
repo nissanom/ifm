@@ -53,7 +53,7 @@ public class UserRestClient
 
             StringEntity params = new StringEntity( json.toString(), Constants.UTF_8 );
             request.addHeader( Constants.CONTENT_TYPE, "application/json;charset=UTF-8" );//????
-            request.addHeader( Constants.CHARSET, Constants.UTF_8 );//????
+            //request.addHeader( Constants.CHARSET, Constants.UTF_8 );//????
             request.setEntity( params );
             HttpResponse response = (HttpResponse) HTTP_CLIENT.execute( request );
             HttpEntity entity = response.getEntity();
