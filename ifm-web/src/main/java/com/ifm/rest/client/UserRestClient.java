@@ -52,8 +52,7 @@ public class UserRestClient
             json.put( "password", password );
 
             StringEntity params = new StringEntity( json.toString(), Constants.UTF_8 );
-            request.addHeader( Constants.CONTENT_TYPE, "application/json;charset=UTF-8" );//????
-            //request.addHeader( Constants.CHARSET, Constants.UTF_8 );//????
+            request.addHeader( Constants.CONTENT_TYPE, Constants.JSON_UTF_8 );//????
             request.setEntity( params );
             HttpResponse response = (HttpResponse) HTTP_CLIENT.execute( request );
             HttpEntity entity = response.getEntity();
@@ -80,8 +79,7 @@ public class UserRestClient
             json.put( "email", email );
             json.put( "password", password );
             StringEntity params = new StringEntity( json.toString(), Constants.UTF_8 );
-            request.addHeader( Constants.CONTENT_TYPE, "application/json" );
-            request.addHeader( Constants.CHARSET, Constants.UTF_8 );
+            request.addHeader( Constants.CONTENT_TYPE, Constants.JSON_UTF_8 );
             request.setEntity( params );
             HttpResponse response = (HttpResponse) HTTP_CLIENT.execute( request );
             HttpEntity entity = response.getEntity();
@@ -105,9 +103,8 @@ public class UserRestClient
         try
         {
             HttpGet request = new HttpGet( Constants.REST_PATH + "auth/user/all" );
-            request.addHeader( Constants.CHARSET, Constants.UTF_8 );//????
             HttpResponse response = HTTP_CLIENT.execute( request );
-            response.addHeader( Constants.CONTENT_TYPE, "application/json;charset=UTF-8" );//????
+            response.addHeader( Constants.CONTENT_TYPE, Constants.JSON_UTF_8 );
             HttpEntity entity = response.getEntity();
             ObjectMapper mapper = new ObjectMapper();
             list = mapper.readValue( EntityUtils.toString( entity ), List.class );

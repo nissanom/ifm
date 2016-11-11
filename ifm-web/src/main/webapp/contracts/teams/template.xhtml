@@ -6,18 +6,18 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">    
     <h:head>
         <ui:include src="/WEB-INF/layout/teams/header_teams.xhtml"/>   
-          
+
     </h:head>
     <h:body class="header-fixed promo-padding-top sliding-panel-ini sliding-panel-flag-right">
         <div class="wrapper">
             <ui:insert name="navbar"/> 
             <div class="header-v6 header-border-bottom header-dark-dropdown header-sticky"> 
-                <ui:include src="/WEB-INF/layout/teams/navbar.xhtml"/> 
+                <ui:include src="/WEB-INF/layout/teams/header-logo-line.xhtml"/> 
             </div>
 
             <ui:insert name="promo"/> 
             <div class="promo-bg-img-v2 fullheight promo-bg-fixed">
-                <ui:include src="/WEB-INF/layout/teams/promo.xhtml"/>
+                <ui:include src="/WEB-INF/layout/teams/big-img-panel.xhtml"/>
             </div>
 
             <div class="content-md"> 
@@ -25,30 +25,24 @@
                 <div class="container">
                     <ui:include src="/WEB-INF/layout/teams/headline-center.xhtml"/>
                     <div class="container content-sm portfolio-4-columns">
-                        <ui:include src="/WEB-INF/layout/content-sm.xhtml"/> 
+                        <ui:include src="/WEB-INF/layout/teams/teams-logos.xhtml"/> 
                     </div>    
                 </div>             
             </div>
 
             <ui:insert name="footer-v1"/>
             <div class="footer-v1">
-                <ui:include src="/WEB-INF/layout/teams/footer-v1.xhtml"/>
+                <ui:include src="/WEB-INF/layout/teams/all-rights-res-footer.xhtml"/>
             </div>
         </div>
 
+        <!--ask what is that - can be deleted??-->
         <ui:insert name="sliding-panel"/>
         <div class="sliding-panel bg-color-darker">
             <ui:include src="/WEB-INF/layout/teams/sliding-panel.xhtml"/>
         </div>
 
-        <!--        <i class="style-switcher-btn fa fa-cogs hidden-xs"></i>
-                <ui:insert name="style-switcher"/>
-                <div class="style-switcher animated fadeInRight">
-                    <ui:include src="/WEB-INF/layout/teams/style-switcher.xhtml"/>
-                </div>-->
-
         <ui:insert name="footer"></ui:insert>            
-        <!--            <ui:include src="/WEB-INF/layout/footer.xhtml"/>-->
         <ui:include src="/WEB-INF/layout/teams/teams_footer_includes.xhtml"/>
 
     </h:body>

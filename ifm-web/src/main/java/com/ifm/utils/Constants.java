@@ -12,6 +12,7 @@ public class Constants
     public static final String UTF_8 = "UTF-8";
     public static final String CONTENT_TYPE = "content-type";
     public static final String CHARSET = "charset";
+    public static final String JSON_UTF_8 = "application/json;charset=UTF-8";
 
     //NAVIGATION
     public static final String TEAMS_PAGE = "teams";

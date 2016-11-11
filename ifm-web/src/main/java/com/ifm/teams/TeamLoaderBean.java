@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ifm.teams;
 
 import com.ifm.dto.TeamDTO;
@@ -25,12 +20,8 @@ public class TeamLoaderBean
 
     @Inject
     private TeamRestClient teamRestClient;
-    
-    
 
-    
     private List<TeamDTO> allTeams = new ArrayList<>();
-    
 
     /**
      * Creates a new instance of TeamLoaderBean
@@ -45,7 +36,6 @@ public class TeamLoaderBean
         allTeams = teamRestClient.getAllTeams();
     }
 
-    
     public List<TeamDTO> getAllTeams()
     {
         return allTeams;

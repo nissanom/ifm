@@ -1,7 +1,6 @@
 package com.ifm.rest.client;
 
 import com.ifm.dto.TeamDTO;
-import com.ifm.dto.UserDTO;
 import com.ifm.utils.Constants;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,13 +13,10 @@ import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.apache.logging.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.json.simple.JSONObject;
 
 /**
  *
@@ -40,8 +36,6 @@ public class TeamRestClient
     {
     }
 
-    
-
     public List<TeamDTO> getAllTeams()
     {
         logger.info( "TEAM LIST IS CALLED" );
@@ -49,9 +43,8 @@ public class TeamRestClient
         try
         {
             HttpGet request = new HttpGet( Constants.REST_PATH + "team/find/all" );
-            
             HttpResponse response = HTTP_CLIENT.execute( request );
-            response.addHeader( Constants.CONTENT_TYPE, "application/json;charset=UTF-8" );//????
+            response.addHeader( Constants.CONTENT_TYPE, Constants.JSON_UTF_8 );
             HttpEntity entity = response.getEntity();
             ObjectMapper mapper = new ObjectMapper();
             list = mapper.readValue( EntityUtils.toString( entity ), List.class );

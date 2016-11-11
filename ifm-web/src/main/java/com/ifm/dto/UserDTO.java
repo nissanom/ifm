@@ -1,8 +1,6 @@
 package com.ifm.dto;
 
 import java.io.Serializable;
-import java.math.BigInteger;
-import java.util.Date;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
