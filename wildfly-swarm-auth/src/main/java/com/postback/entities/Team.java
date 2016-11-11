@@ -35,7 +35,7 @@ public class Team implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -47,20 +47,20 @@ public class Team implements Serializable {
     public Team() {
     }
 
-    public Team(Integer id) {
+    public Team(Long id) {
         this.id = id;
     }
 
-    public Team(Integer id, String name) {
+    public Team(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

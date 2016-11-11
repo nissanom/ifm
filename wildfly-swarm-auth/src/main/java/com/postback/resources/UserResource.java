@@ -19,6 +19,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/auth")
 @Stateless
+@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 public class UserResource
 {
 

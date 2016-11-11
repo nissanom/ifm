@@ -9,8 +9,8 @@
       <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
       <property name="javax.persistence.schema-generation.drop-source" value="metadata"/>
       <property name="current_session_context_class" value="thread"/>
-      <property name="hibernate.show_sql" value="true"/>
-      <property name="hibernate.format_sql" value="true"/>
+      <property name="hibernate.show_sql" value="false"/>
+      <property name="hibernate.format_sql" value="false"/>
     </properties>
   </persistence-unit>
 </persistence>

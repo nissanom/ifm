@@ -38,7 +38,7 @@ public class Player implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Size(max = 30)
     @Column(name = "firstname")
     private String firstname;
@@ -62,21 +62,21 @@ public class Player implements Serializable {
     public Player() {
     }
 
-    public Player(Integer id) {
+    public Player(Long id) {
         this.id = id;
     }
 
-    public Player(Integer id, String lastname, int position) {
+    public Player(Long id, String lastname, int position) {
         this.id = id;
         this.lastname = lastname;
         this.position = position;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

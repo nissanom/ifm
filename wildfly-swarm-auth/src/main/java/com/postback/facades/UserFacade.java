@@ -96,8 +96,8 @@ public class UserFacade extends AbstractFacade<User>
         User user = new User();
         //ModelMapper modelMapper = new ModelMapper();
         //User user = modelMapper.map( userDTO, User.class );
-        user.setFirstName( userDTO.getFirstName() );
-        user.setLastName( userDTO.getLastName() );
+        user.setFirstname( userDTO.getFirstName() );
+        user.setLastname( userDTO.getLastName() );
         user.setEmail( userDTO.getEmail() );
         user.setPasswd( userDTO.getPassword() );//hash passhword
         // boolean check = this.checkEmail( user.getEmail() );

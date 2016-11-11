@@ -34,7 +34,7 @@ public class Playerskills implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Column(name = "passing")
@@ -102,11 +102,11 @@ public class Playerskills implements Serializable {
     public Playerskills() {
     }
 
-    public Playerskills(Integer id) {
+    public Playerskills(Long id) {
         this.id = id;
     }
 
-    public Playerskills(Integer id, double passing, double teamwork, double ballbontrol, double throwIn, double dribbling, double crossing, double zonalmarking, double manmarking, double rushingout, double handling, double shooting, double pace, double heading, double rightfoot, double leftfoot) {
+    public Playerskills(Long id, double passing, double teamwork, double ballbontrol, double throwIn, double dribbling, double crossing, double zonalmarking, double manmarking, double rushingout, double handling, double shooting, double pace, double heading, double rightfoot, double leftfoot) {
         this.id = id;
         this.passing = passing;
         this.teamwork = teamwork;
@@ -125,11 +125,11 @@ public class Playerskills implements Serializable {
         this.leftfoot = leftfoot;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
