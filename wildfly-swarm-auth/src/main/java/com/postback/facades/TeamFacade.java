@@ -33,7 +33,12 @@ public class TeamFacade extends AbstractFacade<Team>
         super( Team.class );
     }
 
-   
+     public TeamDTO findTeam(Long id) {
+         Team team = getEntityManager().find(Team.class, id);
+          ModelMapper modelMapper = new ModelMapper();
+           TeamDTO destObject = modelMapper.map( team, TeamDTO.class );
+        return destObject;
+    }
 
     public List<TeamDTO> getAllTeams()
     {

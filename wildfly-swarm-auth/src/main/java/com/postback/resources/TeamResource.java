@@ -8,6 +8,7 @@ import javax.ws.rs.Produces;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 @Path("/team")
@@ -26,5 +27,16 @@ public class TeamResource
     {
         return teamFacade.getAllTeams();
     }
+    
+    
+    @GET
+    @Path("/find/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public TeamDTO getTeam(@PathParam("id") Long id)
+    {
+        return teamFacade.findTeam( id );
+    }
+    
+    
 
 }
