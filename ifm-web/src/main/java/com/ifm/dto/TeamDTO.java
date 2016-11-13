@@ -15,6 +15,7 @@ public class TeamDTO implements Serializable {
    
     private String name;
   
+    private byte[] teamLogo;
 
     public TeamDTO() {
     }
@@ -36,6 +37,18 @@ public class TeamDTO implements Serializable {
         this.id = id;
     }
 
+    public byte[] getTeamLogo()
+    {
+        return teamLogo;
+    }
+
+    public void setTeamLogo( byte[] teamLogo )
+    {
+        this.teamLogo = teamLogo;
+    }
+
+    
+    
     public String getName() {
         return name;
     }

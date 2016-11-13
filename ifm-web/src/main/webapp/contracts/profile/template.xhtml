@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">    
+    <h:head>
+        <ui:include src="/WEB-INF/layout/profile/header_profile.xhtml"/>   
+
+    </h:head>
+    <h:body>
+        <div class="wrapper">
+            <div class="header">
+                <ui:insert name="top-bar"/> 
+                <div class="container">
+                    <ui:include src="/WEB-INF/layout/profile/top-bar.xhtml"/> 
+                </div>
+                
+                <ui:insert name="nav-bar"/> 
+                <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+                    <ui:include src="/WEB-INF/layout/profile/nav-bar.xhtml"/> 
+                </div>      
+            </div>
+            <ui:insert name="profile-content"/> 
+            <div class="container content profile">
+                   You choosed #{userProfileBean.team.name} !!
+                <ui:include src="/WEB-INF/layout/profile/profile-content.xhtml"/> 
+            </div> 
+            <ui:insert name="footer-v1"/> 
+            <div class="footer-v1">
+                <ui:include src="/WEB-INF/layout/profile/footer-v1.xhtml"/> 
+            </div> 
+        </div>
+
+        <ui:insert name="footer"></ui:insert>            
+        <ui:include src="/WEB-INF/layout/profile/profile_footer_includes.xhtml"/>
+
+    </h:body>
+</html>
+

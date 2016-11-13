@@ -55,4 +55,25 @@ public class TeamRestClient
         }
         return list;
     }
+    
+    
+     public TeamDTO findTeam(Long id)
+    {
+        logger.info( "FIND TEAM  IS CALLED" );
+        TeamDTO  teamDTO = new TeamDTO();
+        try
+        {
+            HttpGet request = new HttpGet( Constants.REST_PATH + "team/find/"+id );
+            HttpResponse response = HTTP_CLIENT.execute( request );
+            response.addHeader( Constants.CONTENT_TYPE, Constants.JSON_UTF_8 );
+            HttpEntity entity = response.getEntity();
+            ObjectMapper mapper = new ObjectMapper();
+            teamDTO = mapper.readValue( EntityUtils.toString( entity ), TeamDTO.class );
+
+        } catch ( IOException | ParseException e )
+        {
+            logger.error( e );
+        }
+        return teamDTO;
+    }
 }

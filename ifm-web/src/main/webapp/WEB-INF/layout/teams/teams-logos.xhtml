@@ -5,7 +5,24 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">   
 
-      
+   
+        <div class="row">
+             <ui:repeat value="#{teamLoaderBean.allTeams}" var="list">
+            	<div class="col-md-3 col-sm-6">
+			<div class="view view-tenth">
+                            <img style="margin-left: 30px;" class="img-responsive" src="#{request.contextPath}/resources/assets/img/teams-logos/team-logo-mta.png" alt="" />
+				<div class="mask">
+                                    <h2>#{list.name}</h2>
+                                       
+					<p>At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                                        <a href="#{request.contextPath}/pages/profile.jsf?teamId=#{list.id}" class="info">Choose</a>
+				</div>
+			</div>
+		</div>
+                 </ui:repeat>
+                       </div>    
+    
+  
 	<div class="row">
 		<div class="col-md-3 col-sm-6">
 			<div class="view view-tenth">

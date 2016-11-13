@@ -35,6 +35,11 @@ public class TeamLoaderBean
     {
         allTeams = teamRestClient.getAllTeams();
     }
+  
+    // Upload list from another bean (case changed )
+//    public void loadMeFromAnotheBeanIfNeeded(){
+//        allTeams = teamRestClient.getAllTeams();        
+//    }
 
     public List<TeamDTO> getAllTeams()
     {
