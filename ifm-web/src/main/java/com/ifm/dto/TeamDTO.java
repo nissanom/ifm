@@ -1,12 +1,13 @@
 package com.ifm.dto;
 
 import java.io.Serializable;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  *
  * @author Omer
  */
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TeamDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -15,7 +16,7 @@ public class TeamDTO implements Serializable {
    
     private String name;
   
-    private byte[] teamLogo;
+    private byte[] logo;
 
     public TeamDTO() {
     }
@@ -37,15 +38,17 @@ public class TeamDTO implements Serializable {
         this.id = id;
     }
 
-    public byte[] getTeamLogo()
+    public byte[] getLogo()
     {
-        return teamLogo;
+        return logo;
     }
 
-    public void setTeamLogo( byte[] teamLogo )
+    public void setLogo( byte[] logo )
     {
-        this.teamLogo = teamLogo;
+        this.logo = logo;
     }
+
+   
 
     
     

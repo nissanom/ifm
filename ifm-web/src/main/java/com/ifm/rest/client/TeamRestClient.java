@@ -38,7 +38,7 @@ public class TeamRestClient
 
     public List<TeamDTO> getAllTeams()
     {
-        logger.info( "TEAM LIST IS CALLED" );
+      //  logger.info( "TEAM LIST IS CALLED" );
         List<TeamDTO> list = new ArrayList<>();
         try
         {
@@ -59,7 +59,7 @@ public class TeamRestClient
     
      public TeamDTO findTeam(Long id)
     {
-        logger.info( "FIND TEAM  IS CALLED" );
+       // logger.info( "FIND TEAM  IS CALLED" );
         TeamDTO  teamDTO = new TeamDTO();
         try
         {
