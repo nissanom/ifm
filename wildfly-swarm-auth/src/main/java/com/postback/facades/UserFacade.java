@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
 
 /**
@@ -34,6 +37,9 @@ import org.modelmapper.ModelMapper;
 public class UserFacade extends AbstractFacade<User>
 {
 
+//    @Inject
+//    private transient Logger logger;
+    
     @PersistenceContext(name = "userPU")
     private EntityManager em;
 
@@ -50,6 +56,7 @@ public class UserFacade extends AbstractFacade<User>
 
     public UserDTO doLogin( String email, String password )
     {
+//        logger.info( "Email:llllllllllllllllllllllllllllllllllllllllllllll " + email );
         UserDTO destObject = null;
         try
         {
@@ -67,7 +74,7 @@ public class UserFacade extends AbstractFacade<User>
             destObject = modelMapper.map( user, UserDTO.class );
         } catch ( Exception e )
         {
-
+//            logger.error( e );
             return null;
         }
         return destObject;

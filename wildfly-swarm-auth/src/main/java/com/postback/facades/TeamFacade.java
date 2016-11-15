@@ -35,8 +35,9 @@ public class TeamFacade extends AbstractFacade<Team>
 
      public TeamDTO findTeam(Long id) {
          Team team = getEntityManager().find(Team.class, id);
+         System.out.println("BYTE ARRAY " + team.getLogo());
           ModelMapper modelMapper = new ModelMapper();
-           TeamDTO destObject = modelMapper.map( team, TeamDTO.class );
+          TeamDTO destObject = modelMapper.map( team, TeamDTO.class );
         return destObject;
     }
 

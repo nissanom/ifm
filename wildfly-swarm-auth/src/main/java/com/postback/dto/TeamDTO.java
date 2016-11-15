@@ -19,6 +19,8 @@ public class TeamDTO implements Serializable {
     private Long id;
    
     private String name;
+    private byte[] logo;
+    
   
 
     public TeamDTO() {
@@ -41,6 +43,18 @@ public class TeamDTO implements Serializable {
         this.id = id;
     }
 
+    public byte[] getLogo()
+    {
+        return logo;
+    }
+
+    public void setLogo( byte[] logo )
+    {
+        this.logo = logo;
+    }
+
+    
+    
     public String getName() {
         return name;
     }

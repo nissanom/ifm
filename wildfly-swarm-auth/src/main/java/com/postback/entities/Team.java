@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -41,6 +42,9 @@ public class Team implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "name")
     private String name;
+    @Lob
+    @Column(name = "logo")
+    private byte[] logo;
     @OneToMany(mappedBy = "team")
     private List<Player> playerList;
 
@@ -79,6 +83,18 @@ public class Team implements Serializable {
     public void setPlayerList(List<Player> playerList) {
         this.playerList = playerList;
     }
+
+    public byte[] getLogo()
+    {
+        return logo;
+    }
+
+    public void setLogo( byte[] logo )
+    {
+        this.logo = logo;
+    }
+    
+    
 
     @Override
     public int hashCode() {
