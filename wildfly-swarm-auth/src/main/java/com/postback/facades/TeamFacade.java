@@ -33,11 +33,12 @@ public class TeamFacade extends AbstractFacade<Team>
         super( Team.class );
     }
 
-     public TeamDTO findTeam(Long id) {
-         Team team = getEntityManager().find(Team.class, id);
-         System.out.println("BYTE ARRAY " + team.getLogo());
-          ModelMapper modelMapper = new ModelMapper();
-          TeamDTO destObject = modelMapper.map( team, TeamDTO.class );
+    public TeamDTO findTeam( Long id )
+    {
+        Team team = getEntityManager().find( Team.class, id );
+        //  System.out.println("BYTE ARRAY " + team.getLogo());
+        ModelMapper modelMapper = new ModelMapper();
+        TeamDTO destObject = modelMapper.map( team, TeamDTO.class );
         return destObject;
     }
 
@@ -57,8 +58,6 @@ public class TeamFacade extends AbstractFacade<Team>
         }
         return finalList;
     }
-
-   
 
     public Integer getCount()
     {

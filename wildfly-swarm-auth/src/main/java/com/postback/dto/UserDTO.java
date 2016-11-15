@@ -3,8 +3,6 @@ package com.postback.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
-import java.math.BigInteger;
-import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDTO implements Serializable {
@@ -19,6 +17,7 @@ public class UserDTO implements Serializable {
     
     private String email;  
     private String password;
+    private Long teamId;
   
     
    
@@ -38,6 +37,18 @@ public class UserDTO implements Serializable {
     {
         this.id = id;
     }
+
+    public Long getTeamId()
+    {
+        return teamId;
+    }
+
+    public void setTeamId( Long teamId )
+    {
+        this.teamId = teamId;
+    }
+    
+    
 
     public String getFirstName()
     {

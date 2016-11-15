@@ -39,7 +39,6 @@ public class UserFacade extends AbstractFacade<User>
 
 //    @Inject
 //    private transient Logger logger;
-    
     @PersistenceContext(name = "userPU")
     private EntityManager em;
 
@@ -127,14 +126,34 @@ public class UserFacade extends AbstractFacade<User>
         return false;
     }
 
-    public User findById( Long id )
+    public UserDTO findById( Long id )
     {
-        return this.find( id );
+        User user = this.find( id );
+        ModelMapper modelMapper = new ModelMapper();
+        UserDTO destObject = modelMapper.map( user, UserDTO.class );
+        return destObject;
     }
 
     public Integer getCount()
     {
         return this.count();
+    }
+
+    public Long updateUser( UserDTO userDTO )
+    {
+        Long id = 0L;
+        User existingUser = getEntityManager().find( User.class, userDTO.getId() );
+        if ( existingUser != null )
+        {
+            ModelMapper modelMapper = new ModelMapper();
+            existingUser = modelMapper.map( userDTO, User.class );
+            getEntityManager().merge( existingUser );
+            getEntityManager().flush();
+            id = existingUser.getId();
+            
+        }
+        return id;
+
     }
 
 }

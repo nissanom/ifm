@@ -55,9 +55,9 @@ public class UserResource
     @PUT
     @Path("/user/update")
     @Consumes( { MediaType.APPLICATION_JSON } )
-    public Long update( UserDTO userDTO )    {
-//        Long id = userFacade.doRegister(userDTO);doEdit()
-        return 0L;
+    public Response update( UserDTO userDTO )    {
+        Long id = userFacade.updateUser( userDTO );
+        return Response.ok().entity(id).type(MediaType.APPLICATION_JSON).build();
     }
 
     @DELETE
@@ -70,9 +70,9 @@ public class UserResource
     @GET
     @Path("/user/find/{id}")
     @Produces( { MediaType.APPLICATION_JSON } )
-    public User find( @PathParam("id") Long id )
+    public UserDTO find( @PathParam("id") Long id )
     {
-        return userFacade.find( id );
+        return userFacade.findById(id );
     }
 
     @PUT
