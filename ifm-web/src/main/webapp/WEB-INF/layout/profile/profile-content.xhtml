@@ -71,6 +71,8 @@
                         <li><a data-toggle="tab" href="#settings">Notification Settings</a></li>
                     </ul>
                     <div class="tab-content">
+                        <h:form prependId="false">
+                            <p:growl/>
                         <div id="profile" class="profile-edit tab-pane fade in active">
                             <h2 class="heading-md">Manage your Name, ID and Email Addresses.</h2>
                             <p>Below are the name and email addresses on file for your account.</p>
@@ -78,7 +80,7 @@
                                 <dl class="dl-horizontal">
                                     <dt><strong>Your name </strong></dt>
                                     <dd>
-                                        Edward Rooster
+                                        <h:inputText id="firstname" value="#{userProfileBean.userDTO.firstName}"/>
                                         <span>
                                             <a class="pull-right" href="#">
                                                 <i class="fa fa-pencil"></i>
@@ -86,9 +88,9 @@
                                         </span>
                                     </dd>
                                     <hr></hr>
-                                    <dt><strong>Your ID </strong></dt>
+                                    <dt><strong>Last Name </strong></dt>
                                     <dd>
-                                        FKJ-032440
+                                       <h:inputText id="lastname" value="#{userProfileBean.userDTO.lastName}"/>
                                         <span>
                                             <a class="pull-right" href="#">
                                                 <i class="fa fa-pencil"></i>
@@ -108,7 +110,7 @@
                                     <hr></hr>
                                     <dt><strong>Primary Email Address </strong></dt>
                                     <dd>
-                                        edward-rooster@gmail.com
+                                        <h:inputText id="email" value="#{userProfileBean.userDTO.email}"/>
                                         <span>
                                             <a class="pull-right" href="#">
                                                 <i class="fa fa-pencil"></i>
@@ -147,9 +149,10 @@
                                     </dd>
                                     <hr></hr>
                                 </dl>
-                                <button type="button" class="btn-u btn-u-default">Cancel</button>
-                                <button type="button" class="btn-u">Save Changes</button>
+                                <button type="button" class="btn-u btn-u-default">Cancel</button>                                
+                                <h:commandButton value="Save changes"  styleClass="btn-u" action="#{userProfileBean.doUpdate()}"/>
                         </div>
+                            </h:form>
 
                         <div id="passwordTab" class="profile-edit tab-pane fade">
                             <h2 class="heading-md">Manage your Security Settings</h2>

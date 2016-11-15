@@ -14,6 +14,7 @@ import org.apache.http.ParseException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
@@ -114,5 +115,54 @@ public class UserRestClient
             logger.error( e );
         }
         return list;
+    }
+    
+    public void doUserUpdate(UserDTO userDTO){
+          Long userModel = null;
+        try
+        {
+            HttpPut request = new HttpPut( Constants.REST_PATH + "auth/user/update" );
+            JSONObject json = new JSONObject();
+            json.put( "firstName", userDTO.getFirstName() );
+            json.put( "lastName",  userDTO.getLastName());
+            json.put( "email",  userDTO.getEmail());
+            json.put( "id",  userDTO.getId());
+            
+            StringEntity params = new StringEntity( json.toString(), Constants.UTF_8 );
+            request.addHeader( Constants.CONTENT_TYPE, Constants.JSON_UTF_8 );
+            request.setEntity( params );
+            HttpResponse response = (HttpResponse) HTTP_CLIENT.execute( request );
+            HttpEntity entity = response.getEntity();
+            if ( entity != null )
+            {
+                ObjectMapper mapper = new ObjectMapper();
+                ///userModel = mapper.readValue( (EntityUtils.toString( entity )), Long.class );
+            }
+
+        } catch ( IOException | ParseException e )
+        {
+            logger.error( e );
+        }
+        
+    }
+    
+     public UserDTO findUser(Long id)
+    {
+        logger.info( "Find user by id " + id );
+        UserDTO user = null;
+        try
+        {
+            HttpGet request = new HttpGet( Constants.REST_PATH + "auth/user/find/" +id );
+            HttpResponse response = HTTP_CLIENT.execute( request );
+            response.addHeader( Constants.CONTENT_TYPE, Constants.JSON_UTF_8 );
+            HttpEntity entity = response.getEntity();
+            ObjectMapper mapper = new ObjectMapper();
+            user = mapper.readValue( EntityUtils.toString( entity ), UserDTO.class );
+
+        } catch ( IOException | ParseException e )
+        {
+            logger.error( e );
+        }
+        return user;
     }
 }

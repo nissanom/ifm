@@ -23,7 +23,7 @@
             </div>
             <ui:insert name="profile-content"/> 
             <div class="container content profile">
-                   You choosed #{userProfileBean.team.name} !!
+                You choosed #{sessionContext.team.name} !!
                 <ui:include src="/WEB-INF/layout/profile/profile-content.xhtml"/> 
             </div> 
             <ui:insert name="footer-v1"/> 

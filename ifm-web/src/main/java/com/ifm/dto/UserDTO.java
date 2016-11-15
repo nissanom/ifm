@@ -18,6 +18,7 @@ public class UserDTO implements Serializable
     private String lastName;
     private String email;
     private String password;
+    private Long teamId;
 
 //    private Integer status;
 //    private Date registerDate;
@@ -43,6 +44,17 @@ public class UserDTO implements Serializable
     {
         this.id = id;
     }
+
+    public Long getTeamId()
+    {
+        return teamId;
+    }
+
+    public void setTeamId( Long teamId )
+    {
+        this.teamId = teamId;
+    }    
+    
 
     public String getFirstName()
     {

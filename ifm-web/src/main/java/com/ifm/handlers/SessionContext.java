@@ -1,5 +1,6 @@
 package com.ifm.handlers;
 
+import com.ifm.dto.TeamDTO;
 import com.ifm.dto.UserDTO;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -15,6 +16,7 @@ public class SessionContext implements Serializable
 {
 
     private UserDTO user = new UserDTO();
+    private TeamDTO team = new TeamDTO();
     /// my payments DTO
     // my current games///
 
@@ -24,6 +26,18 @@ public class SessionContext implements Serializable
     public SessionContext()
     {
     }
+
+    public TeamDTO getTeam()
+    {
+        return team;
+    }
+
+    public void setTeam( TeamDTO team )
+    {
+        this.team = team;
+    }
+    
+    
 
     public UserDTO getUser()
     {
