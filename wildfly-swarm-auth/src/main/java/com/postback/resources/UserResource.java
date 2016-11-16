@@ -16,6 +16,8 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Path("/auth")
 @Stateless
@@ -23,22 +25,24 @@ import javax.ws.rs.core.Response;
 public class UserResource
 {
 
+    private static final Logger LOGGER = LogManager.getLogger( UserResource.class.getName() );
+
     @Inject
     private UserFacade userFacade;
 
     @POST
     @Path("/user/login")
-    @Consumes( { MediaType.APPLICATION_JSON } )
-    @Produces( { MediaType.APPLICATION_JSON } )
+    @Consumes( { MediaType.APPLICATION_JSON })
+    @Produces( { MediaType.APPLICATION_JSON })
     public UserDTO login( UserDTO dto )
     {
-        System.out.println( "DO LOGGIN CALLED!!!!!" );
+        LOGGER.info( "DO LOGGIN CALLED!!!!!!!!!!!!" );
         return userFacade.doLogin( dto.getEmail(), dto.getPassword() );
     }
 
     @GET
     @Path("/user/all")
-    @Produces( MediaType.APPLICATION_JSON )
+    @Produces(MediaType.APPLICATION_JSON)
     public List<UserDTO> getAllUsers()
     {
         return userFacade.getUsers();
@@ -46,18 +50,20 @@ public class UserResource
 
     @POST
     @Path("/user/register")
-    @Consumes( { MediaType.APPLICATION_JSON } )
-    public Response create( UserDTO userDTO )    {
+    @Consumes( { MediaType.APPLICATION_JSON })
+    public Response create( UserDTO userDTO )
+    {
         userDTO = userFacade.doRegister( userDTO );
-        return Response.ok().entity(userDTO).type(MediaType.APPLICATION_JSON).build();
+        return Response.ok().entity( userDTO ).type( MediaType.APPLICATION_JSON ).build();
     }
-    
+
     @PUT
     @Path("/user/update")
-    @Consumes( { MediaType.APPLICATION_JSON } )
-    public Response update( UserDTO userDTO )    {
+    @Consumes( { MediaType.APPLICATION_JSON })
+    public Response update( UserDTO userDTO )
+    {
         Long id = userFacade.updateUser( userDTO );
-        return Response.ok().entity(id).type(MediaType.APPLICATION_JSON).build();
+        return Response.ok().entity( id ).type( MediaType.APPLICATION_JSON ).build();
     }
 
     @DELETE
@@ -69,15 +75,15 @@ public class UserResource
 
     @GET
     @Path("/user/find/{id}")
-    @Produces( { MediaType.APPLICATION_JSON } )
+    @Produces( { MediaType.APPLICATION_JSON })
     public UserDTO find( @PathParam("id") Long id )
     {
-        return userFacade.findById(id );
+        return userFacade.findById( id );
     }
 
     @PUT
     @Path("/user/{id}")
-    @Consumes( { MediaType.APPLICATION_JSON } )
+    @Consumes( { MediaType.APPLICATION_JSON })
     public void edit( @PathParam("id") Long id, User entity )
     {
         entity.setId( id );

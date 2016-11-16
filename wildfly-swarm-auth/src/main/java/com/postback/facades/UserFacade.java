@@ -3,42 +3,27 @@ package com.postback.facades;
 import com.postback.dto.UserDTO;
 
 import com.postback.entities.User;
-import com.postback.utils.HashUtil;
 import com.postback.utils.UserStatuses;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
 
 /**
  *
- * @author armenar
+ * @author Omer
  */
-@Stateless// it has internal pooling to the database
-// 1000 user access, by itself it is created 30 instance,
-//
-//@Stateful
-// and it create instance per user, 1000 user , 1000 instance, and it will keep session, untill you kill it
-//Pre destory, post construct , for contact statetfull  you should have also Session Bean in frontend.
-///
+@Stateless
 
-//@Singleton
-//@Startup
-// 
-// Local and Remote, EJB3.1 we can use EJB without interfaces
-//local @, it is used only from another EJB-s, 
-//@LocalBean///
 public class UserFacade extends AbstractFacade<User>
 {
 
-//    @Inject
-//    private transient Logger logger;
+    private static final Logger LOGGER = LogManager.getLogger( UserFacade.class.getName() );
+
     @PersistenceContext(name = "userPU")
     private EntityManager em;
 
@@ -55,7 +40,7 @@ public class UserFacade extends AbstractFacade<User>
 
     public UserDTO doLogin( String email, String password )
     {
-//        logger.info( "Email:llllllllllllllllllllllllllllllllllllllllllllll " + email );
+        LOGGER.info( "User email: " + email );
         UserDTO destObject = null;
         try
         {
@@ -73,7 +58,7 @@ public class UserFacade extends AbstractFacade<User>
             destObject = modelMapper.map( user, UserDTO.class );
         } catch ( Exception e )
         {
-//            logger.error( e );
+            LOGGER.error( e.getMessage() );
             return null;
         }
         return destObject;
@@ -93,36 +78,29 @@ public class UserFacade extends AbstractFacade<User>
             } );
         } catch ( Exception e )
         {
+            LOGGER.error( e.getMessage() );
         }
         return finalList;
     }
 
-    public UserDTO doRegister( UserDTO userDTO ) // Is this method get User ?????????????????????
+    public UserDTO doRegister( UserDTO userDTO )
     {
         User user = new User();
-        //ModelMapper modelMapper = new ModelMapper();
-        //User user = modelMapper.map( userDTO, User.class );
         user.setFirstname( userDTO.getFirstName() );
         user.setLastname( userDTO.getLastName() );
         user.setEmail( userDTO.getEmail() );
-        user.setPasswd( userDTO.getPassword() );//hash passhword
-        // boolean check = this.checkEmail( user.getEmail() );
+        user.setPasswd( userDTO.getPassword() ); //hash passhword
         Long userId = 0L;
-        //if ( !check )
-        //{
         user.setStatus( UserStatuses.DISABLED_USER );
         em.persist( user );
-        //em.merge( user ); for doE
         em.flush();
         userId = user.getId();
-        //  }
         userDTO.setId( userId );
         return userDTO;
     }
 
     public boolean checkEmail( String email )
     {
-
         return false;
     }
 
@@ -150,10 +128,9 @@ public class UserFacade extends AbstractFacade<User>
             getEntityManager().merge( existingUser );
             getEntityManager().flush();
             id = existingUser.getId();
-            
+
         }
         return id;
-
     }
 
 }

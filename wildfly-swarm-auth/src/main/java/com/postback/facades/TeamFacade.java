@@ -8,17 +8,21 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
 
 /**
  *
- * @author armenar
+ * @author Omer
  */
 @Stateless// it has internal pooling to the database
 
 public class TeamFacade extends AbstractFacade<Team>
 {
 
+    private static final Logger LOGGER = LogManager.getLogger( TeamFacade.class.getName() );
+    
     @PersistenceContext(name = "userPU")
     private EntityManager em;
 
@@ -36,7 +40,6 @@ public class TeamFacade extends AbstractFacade<Team>
     public TeamDTO findTeam( Long id )
     {
         Team team = getEntityManager().find( Team.class, id );
-        //  System.out.println("BYTE ARRAY " + team.getLogo());
         ModelMapper modelMapper = new ModelMapper();
         TeamDTO destObject = modelMapper.map( team, TeamDTO.class );
         return destObject;
@@ -49,12 +52,12 @@ public class TeamFacade extends AbstractFacade<Team>
         {
             List<Team> postList = em.createQuery( "SELECT o FROM Team o WHERE o.id > 0" ).getResultList();
             ModelMapper mapper = new ModelMapper();
-            postList.stream().map( ( u ) -> mapper.map( u, TeamDTO.class ) ).forEachOrdered( ( destObject ) ->
-            {
-                finalList.add( destObject );
-            } );
-        } catch ( Exception e )
+            postList.stream().map( ( u ) -> mapper.map( u, TeamDTO.class ) ).forEachOrdered( ( destObject ) -> {
+                finalList.add( destObject ); } );
+        } 
+        catch ( Exception e )
         {
+            LOGGER.error( e.getMessage() );
         }
         return finalList;
     }
