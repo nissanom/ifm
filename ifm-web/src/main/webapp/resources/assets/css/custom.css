@@ -1,1 +1,6 @@
 /* Add here all your css styles (customizations) */
+.footer-all-rights {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

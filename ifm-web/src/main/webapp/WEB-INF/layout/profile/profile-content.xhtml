@@ -9,54 +9,11 @@
         <!--Left Sidebar-->
         <div class="col-md-3 md-margin-bottom-40">
             <img class="img-responsive profile-img margin-bottom-20" src="#{request.contextPath}/resources/assets/img/team/img32-md.jpg" alt=""/>
-
-            <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
-                <li class="list-group-item">
-                    <a href="page_profile.html"><i class="fa fa-bar-chart-o"></i> Overall</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="page_profile_me.html"><i class="fa fa-user"></i> Profile</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="page_profile_users.html"><i class="fa fa-group"></i> Users</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="page_profile_projects.html"><i class="fa fa-cubes"></i> My Projects</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="page_profile_comments.html"><i class="fa fa-comments"></i> Comments</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="page_profile_history.html"><i class="fa fa-history"></i> History</a>
-                </li>
-                <li class="list-group-item active">
-                    <a href="page_profile_settings.html"><i class="fa fa-cog"></i> Settings</a>
-                </li>
-            </ul>
-
-            <div class="panel-heading-v2 overflow-h">
-                <h2 class="heading-xs pull-left"><i class="fa fa-bar-chart-o"></i> Task Progress</h2>
-                <a href="#"><i class="fa fa-cog pull-right"></i></a>
+            <h2 class="color-green pull-left">Your Team:</h2>
+            <div class="view view-tenth">
+                <img style="margin-left: 30px;" class="img-responsive" src="#{request.contextPath}/PreviewImage?fileId=#{userProfileBean.teamId}" alt="#{list.name}" />                     
             </div>
-            <h3 class="heading-xs">Web Design <span class="pull-right">92%</span></h3>
-            <div class="progress progress-u progress-xxs">
-                <div style="width: 92%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="92" role="progressbar" class="progress-bar progress-bar-u">
-                </div>
-            </div>
-            <h3 class="heading-xs">Unify Project <span class="pull-right">85%</span></h3>
-            <div class="progress progress-u progress-xxs">
-                <div style="width: 85%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="85" role="progressbar" class="progress-bar progress-bar-blue">
-                </div>
-            </div>
-            <h3 class="heading-xs">Sony Corporation <span class="pull-right">64%</span></h3>
-            <div class="progress progress-u progress-xxs margin-bottom-40">
-                <div style="width: 64%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="64" role="progressbar" class="progress-bar progress-bar-dark">
-                </div>
-            </div>
-
             <hr></hr>
-
-
         </div>
         <!--End Left Sidebar-->
 
@@ -98,49 +55,9 @@
                                         </span>
                                     </dd>
                                     <hr></hr>
-                                    <dt><strong>Company name </strong></dt>
-                                    <dd>
-                                        Htmlstream
-                                        <span>
-                                            <a class="pull-right" href="#">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
-                                        </span>
-                                    </dd>
-                                    <hr></hr>
                                     <dt><strong>Primary Email Address </strong></dt>
                                     <dd>
                                         <h:inputText id="email" value="#{userProfileBean.userDTO.email}"/>
-                                        <span>
-                                            <a class="pull-right" href="#">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
-                                        </span>
-                                    </dd>
-                                    <hr></hr>
-                                    <dt><strong>Phone Number </strong></dt>
-                                    <dd>
-                                        (304) 33-2867-499
-                                        <span>
-                                            <a class="pull-right" href="#">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
-                                        </span>
-                                    </dd>
-                                    <hr></hr>
-                                    <dt><strong>Office Number </strong></dt>
-                                    <dd>
-                                        (304) 44-9810-296
-                                        <span>
-                                            <a class="pull-right" href="#">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
-                                        </span>
-                                    </dd>
-                                    <hr></hr>
-                                    <dt><strong>Address </strong></dt>
-                                    <dd>
-                                        California, US
                                         <span>
                                             <a class="pull-right" href="#">
                                                 <i class="fa fa-pencil"></i>
