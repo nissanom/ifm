@@ -119,13 +119,23 @@ public class UserFacade extends AbstractFacade<User>
 
     public Long updateUser( UserDTO userDTO )
     {
+        LOGGER.info( "existingUser : " + userDTO.getFirstName() + " " + userDTO.getLastName() + " " + userDTO.getEmail()
+                + " " + userDTO.getPassword() + " " + userDTO.getTeamId() );
         Long id = 0L;
         User existingUser = getEntityManager().find( User.class, userDTO.getId() );
+
         if ( existingUser != null )
         {
+            LOGGER.info( "existingUser : " + existingUser.getFirstname() + " " + existingUser.getLastname()+ " " + existingUser.getEmail()
+                    + " " + existingUser.getPasswd() + " " + existingUser.getStatus()+ " " + existingUser.getRegisterDate()+ " " +
+                    existingUser.getTeamId());
+                    
             ModelMapper modelMapper = new ModelMapper();
+            userDTO.setPassword( existingUser.getPasswd()); // Is there a good way to not change fields that user didn't modified????
             existingUser = modelMapper.map( userDTO, User.class );
+            existingUser.setId( userDTO.getId() );
             getEntityManager().merge( existingUser );
+                        
             getEntityManager().flush();
             id = existingUser.getId();
 
