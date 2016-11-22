@@ -5,45 +5,44 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-   <h:outputScript library="primefaces" name="jquery/jquery.js"  target="head"/>
+   <h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/>
     <h:outputScript target="head">
         $ = jQuery;
     </h:outputScript>
 
     <!-- JS Global Compulsory -->
-    <script src="#{request.contextPath}/resources/assets/plugins/jquery/jquery.min.js"></script>
-    <script src="#{request.contextPath}/resources/assets/plugins/jquery/jquery-migrate.min.js"></script>
-    <script src="#{request.contextPath}/resources/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <h:outputScript name="plugins/jquery/jquery.min.js" library="assets"/>
+    <h:outputScript name="plugins/jquery/jquery-migrate.min.js" library="assets"/>
+    <h:outputScript name="plugins/bootstrap/js/bootstrap.min.js" library="assets"/>
 
     <!-- JS Implementing Plugins -->
-    <script src="#{request.contextPath}/resources/assets/plugins/back-to-top.js"></script>
-    <script src="#{request.contextPath}/resources/assets/plugins/backstretch/jquery.backstretch.min.js"></script>
+    <h:outputScript name="plugins/back-to-top.js" library="assets"/>
+    <h:outputScript name="plugins/backstretch/jquery.backstretch.min.js" library="assets"/>
 
     <!-- JS Customization -->
-    <script src="#{request.contextPath}/resources/assets/js/custom.js"></script>
+    <h:outputScript name="js/custom.js" library="assets"/>
 
     <!-- JS Page Level -->
-    <script src="#{request.contextPath}/resources/assets/js/app.js"></script>
-    <script>
+    <h:outputScript name="js/app.js" library="assets"/>
+    <script type="text/javascript">
         jQuery(document).ready(function () {
             App.init();
         });
     </script>
-                <script>
-                    $(".image-block").backstretch([
-                        "#{request.contextPath}/resources/assets/img/bg/img_ball1.jpg",
-                        "#{request.contextPath}/resources/assets/img/bg/img_ball10.jpg"
-                    ], {
-                        fade: 1000,
-                        duration: 7000
-                    });
-                </script>
+    <script>
+        $(".image-block").backstretch([
+            "#{request.contextPath}/resources/assets/img/bg/img_ball1.jpg",
+            "#{request.contextPath}/resources/assets/img/bg/img_ball10.jpg"
+        ], {
+            fade: 1000,
+            duration: 7000
+        });
+    </script>
   
     <!--[if lt IE 9]>
     <script src="#{request.contextPath}/resources/assets/plugins/respond.js"></script>
     <script src="#{request.contextPath}/resources/assets/plugins/html5shiv.js"></script>
     <script src="#{request.contextPath}/resources/assets/plugins/placeholder-IE-fixes.js"></script>
     <![endif]-->
-
 </html>
 

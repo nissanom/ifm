@@ -45,5 +45,12 @@ public class TeamLoaderBean
     {
         return allTeams;
     }
+    
+     
+    
+    public List<TeamDTO> getLineTeams(int i,int j)
+    {
+        return allTeams.subList( i, j );
+    }
 
 }

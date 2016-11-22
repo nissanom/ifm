@@ -127,13 +127,14 @@ public class UserRestClient
             json.put( "lastName",  userDTO.getLastName());
             json.put( "email",  userDTO.getEmail());
             json.put( "id",  userDTO.getId());
+            json.put( "teamId",  userDTO.getTeamId());
             
             StringEntity params = new StringEntity( json.toString(), Constants.UTF_8 );
             request.addHeader( Constants.CONTENT_TYPE, Constants.JSON_UTF_8 );
             request.setEntity( params );
             HttpResponse response = (HttpResponse) HTTP_CLIENT.execute( request );
             HttpEntity entity = response.getEntity();
-            if ( entity != null )
+            if ( entity != null ) // What is this if block?????
             {
                 ObjectMapper mapper = new ObjectMapper();
                 ///userModel = mapper.readValue( (EntityUtils.toString( entity )), Long.class );

@@ -22,7 +22,6 @@ import org.apache.logging.log4j.Logger;
  * @author home
  */
 @WebServlet(urlPatterns = { "/PreviewImage" })
-
 public class PreviewImage extends HttpServlet
 {
 

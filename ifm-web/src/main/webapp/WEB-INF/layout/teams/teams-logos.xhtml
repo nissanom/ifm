@@ -5,20 +5,53 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">   
 
+      
     <div class="row">
-        <ui:repeat value="#{teamLoaderBean.allTeams}" var="list">
+      <ui:repeat value="#{teamLoaderBean.getLineTeams(0, 4)}" var="list">
             <div class="col-md-3 col-sm-6">
                 <div class="view view-tenth">
                     <img style="margin-left: 30px;" class="img-responsive" src="#{request.contextPath}/PreviewImage?fileId=#{list.id}" alt="#{list.name}" />                     
                     <div class="mask">
                         <h2>#{list.name}</h2>
-                        <p>At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                      
                         <a href="#{request.contextPath}/pages/profile.jsf?teamId=#{list.id}" class="info">Choose</a>
                     </div>
                 </div>
             </div>
-
-        </ui:repeat>
-    </div>    
+    </ui:repeat>
+    </div> 
+    
+        <div class="row">
+      <ui:repeat value="#{teamLoaderBean.getLineTeams(4, 8)}" var="list">
+            <div class="col-md-3 col-sm-6">
+                <div class="view view-tenth">
+                    <img style="margin-left: 30px;" class="img-responsive" src="#{request.contextPath}/PreviewImage?fileId=#{list.id}" alt="#{list.name}" />                     
+                    <div class="mask">
+                        <h2>#{list.name}</h2>
+                      
+                        <a href="#{request.contextPath}/pages/profile.jsf?teamId=#{list.id}" class="info">Choose</a>
+                    </div>
+                </div>
+            </div>
+    </ui:repeat>
+    </div>  
+    
+            <div class="row">
+      <ui:repeat value="#{teamLoaderBean.getLineTeams(8, 12)}" var="list">
+            <div class="col-md-3 col-sm-6">
+                <div class="view view-tenth">
+                    <img style="margin-left: 30px;" class="img-responsive" src="#{request.contextPath}/PreviewImage?fileId=#{list.id}" alt="#{list.name}" />                     
+                    <div class="mask">
+                        <h2>#{list.name}</h2>
+                      
+                        <a href="#{request.contextPath}/pages/profile.jsf?teamId=#{list.id}" class="info">Choose</a>
+                    </div>
+                </div>
+            </div>
+    </ui:repeat>
+    </div> 
+    
+      
+    
 </html>
 

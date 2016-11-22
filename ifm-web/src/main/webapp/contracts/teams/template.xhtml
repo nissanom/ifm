@@ -6,24 +6,34 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">    
     <h:head>
         <ui:include src="/WEB-INF/layout/teams/header_teams.xhtml"/>   
+        <style>
+            .promo-bg-img-v2 {
+  background: url('#{request.contextPath}/#{applicationManager.imagePath}') no-repeat;
+  background-size: cover;
+}
+        </style>
 
     </h:head>
     <h:body class="header-fixed promo-padding-top sliding-panel-ini sliding-panel-flag-right">
         <div class="wrapper">
             <ui:insert name="navbar"/> 
+           
+            
             <div class="header-v6 header-border-bottom header-dark-dropdown header-sticky"> 
                 <ui:include src="/WEB-INF/layout/teams/header-logo-line.xhtml"/> 
             </div>
 
             <ui:insert name="promo"/> 
-            <div class="promo-bg-img-v2 fullheight promo-bg-fixed">
-                <ui:include src="/WEB-INF/layout/teams/big-img-panel.xhtml"/>
+            
+            <div class="promo-bg-img-v2 fullheight promo-bg-fixed">             
+                <ui:include src="/WEB-INF/layout/teams/big-img-panel.xhtml"/>                
             </div>
+               
 
             <div class="content-md"> 
                 <ui:insert name="headline-center"/>
                 <div class="container">
-                    <ui:include src="/WEB-INF/layout/teams/headline-center.xhtml"/>
+                   
                     <div class="container content-sm portfolio-4-columns">
                         <ui:include src="/WEB-INF/layout/teams/teams-logos.xhtml"/> 
                     </div> 
